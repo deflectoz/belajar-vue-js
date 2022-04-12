@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Vue</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+        body {
+            margin: 5%;
+            font-family: 'Quicksand', sans-serif;
+        }
+    </style>
+</head>
+<body>
+   
+    <div id="app">
+        <header>
+            <img src="" alt="">
+            <h1 v-html="name"></h1>
+            <p>Bilangan ini adalah bilangan {{infoBilangan}}</p>
+            <p>{{message}}</p>
+        </header>
+        <footer id="footer">
+            <p>Copyright 2022</p>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    const member = {
+         // String, Number, Bolean, Array, Object
+         name: 'Muhammad Febriyan Akbar',
+         message: "Software Developer",
+         qty: 1,
+         namaDepan : 'Muhammad',
+         namaBelakang : ' Febriyan Akbar',
+         bilangan : 3,
+         link: '<a href="">Kelas Beledemya</a>'
+    }
+        
+    const vm = new Vue({
+          el: '#app',
+          data: member,
+          methods: {
+              getname: function (){
+                  return 'Hello, ' +this.name //Kalo mau ambil property pakai this
+              },
+              ubahNama: function (namaBaru){
+                  this.name = namaBaru
+              }
+          },
+          computed : {
+            totalBayar : function(){
+                return this.qty * 10000
+            },
+            namaLengkap : function (){
+                return this.namaDepan + this.namaBelakang 
+            },
+            infoBilangan : function (){
+                return this.bilangan%2 == 0 ? 'Genap' : 'Ganjil'
+            }
+          }
+      })
+    </script>
+</body>
+</html>
